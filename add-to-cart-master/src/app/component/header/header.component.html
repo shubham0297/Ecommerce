@@ -1,0 +1,43 @@
+<header>
+    <div class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="navbar-brand align-item-center d-flex">
+            <i style="font-size: 40px;" class="fas fa-shipping-fast">&nbsp;
+                
+            </i>
+            <strong style="font-size: 30px;" routerLink="/products" >HumberCart</strong>
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+            </div>
+            <span class="fas fa-search search-icon"></span>
+
+
+        </div>
+        <button routerLink="/login" class="btn btn-primary" *ngIf= 'this.user?.result!=1' >
+            Login
+        </button>
+
+        <button routerLink="/register" class="btn btn-primary" *ngIf= 'this.user?.result!=1'> 
+            SignUp
+        </button>
+
+        <div class="mb-2 ">
+            <div>
+                <strong style="font-size: 16px; color:white" *ngIf= 'this.user?.result==1' > Welcome {{this.user.data.email}}</strong>
+            </div>
+        </div>
+        
+        
+        <button routerLink="/cart" class="btn btn-primary">
+            <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+            <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
+
+        <button routerLink="/register" class="btn btn-primary" *ngIf= 'this.user?.result==1' (click)=logout()> 
+            Logout
+        </button>
+
+        
+
+
+    </div>
+</header>
