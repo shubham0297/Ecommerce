@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container d-flex" style="width:auto; " *ngIf= 'this.user?.result==1 && this.user?.data.root_access==1'>
+    <p  class="mr-4 mb-0 pt-2 "> <b>Show All History </b> &nbsp;</p>
+    <i *ngIf= "this.toggleOn" class="fas fa-toggle-on" style="font-size: 33px;
+    cursor: pointer;
+    position: absolute;
+    right: 1021px;
+    top: 74px; " (click)="toggleOff()"></i>
+
+    <i *ngIf= "!this.toggleOn" class="fas fa-toggle-off" style="font-size: 33px;
+    cursor: pointer;
+    position: absolute;
+    right: 1021px;
+    top: 74px; " (click)="toggleOnButton()"></i>
+    <!-- <button routerLink="/addProducts" class="m-2 btn btn-primary" *ngIf= 'this.user?.result==1 && this.user?.data.root_access==1' >
+        All
+    </button>
+
+    <button routerLink="/orderHistory" class="m-2 btn btn-primary" *ngIf= 'this.user?.result==1' > 
+        Mine 
+    </button> -->
+</div>
+<div class="container">
+    <div class="card-table">
+        <div class="cart-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Order ID</th>
+                        <th>Order Date</th>
+                        <th>Order Total</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let item of products; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.title}}</td>
+                        <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
+                        <td style="width: 25%;">{{item.description}}</td>
+                        <th style="width: 12%;">{{item.price}}</th>
+                        <td style="width: 12%;">{{item.quantity}} 
+                        </td>
+                        <td style="width: 12%;">{{item.total}}</td>
+                        <td>
+                            <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr> -->
+                    <tr *ngFor="let item of orderHistory;  let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item.order_id}}</td>
+                        <td>{{item.order_date}} </td>
+                        <td>{{item.order_total}} </td>
+                        <td>{{item.product_id}} </td>
+                        <td>{{item.product_name}}</td>
+                        <td>{{item.item_price}}</td>
+                        <td>{{item.quantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

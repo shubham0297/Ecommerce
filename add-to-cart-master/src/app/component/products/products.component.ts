@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
 
   public productList : any ;
   public filterCategory : any
+  public categoryList: any;
   searchKey:string ="";
   public user :any
   constructor(private loginService: LoginService, private api : ApiService, private cartService : CartService) { 
@@ -31,22 +32,43 @@ export class ProductsComponent implements OnInit {
         Object.assign(a,{quantity:1,total:a.price});
       });
       console.log(this.productList)
+      this.api.getCategories().subscribe(res=>{
+        this.categoryList = res;
+      });
     });
 
     this.cartService.search.subscribe((val:any)=>{
       this.searchKey = val;
     })
+
+    
   }
   addtocart(item: any){
     this.cartService.addtoCart(item);
   }
-  filter(category:string){
+  filter(categoryName:string){
+    let category = 0
+    if (categoryName == ''){
+        this.filterCategory = this.productList
+        return
+    }
+      
+
+    if(categoryName == 'electronics'){
+      category = 4
+    } else if(categoryName == 'fashion'){
+      category = 1
+    } else if(categoryName == 'jewelery'){
+      category = 2
+    }
     this.filterCategory = this.productList
     .filter((a:any)=>{
-      if(a.category == category || category==''){
+      if(a.category_id == category){
         return a;
       }
     })
   }
+
+  
 
 }

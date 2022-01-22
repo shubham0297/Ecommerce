@@ -39,7 +39,8 @@ export class CartComponent implements OnInit {
     if(this.user.result != 1){
       this.showLoginAlert = true
     } else {
-      this.router.navigate(['/checkout'])
+      console.log(this.products)
+      this.router.navigate(['/checkout'], { state:{productsData: this.products, grandTotal:this.grandTotal, cust_id: this.user?.data?.customer_id} } )
     }
   }
 

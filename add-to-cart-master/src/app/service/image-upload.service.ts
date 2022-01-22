@@ -19,7 +19,13 @@ export class ImageUploadService {
     console.log(body)
     return this.http.post("http://localhost:5000/addCategory",body).pipe(
           (res:any)=> {return res}
-      )
+    )
   }
+
+  postProductImage(body:any ){
+    return this.http.post("http://localhost:5000/addProduct",body).pipe(
+      (res:any)=> {return res}
+    )
+}
 
 }

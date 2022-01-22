@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import { RegisterService } from 'src/app/service/register.service';
 
 /**
  *
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: any ; 
 
-  constructor(private builder: FormBuilder, private router: Router) { }
+  constructor(private registerService : RegisterService, private builder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.buildForm()
@@ -51,9 +52,9 @@ export class RegisterComponent implements OnInit {
 
   buildForm() {
     this.registerForm = this.builder.group({
-      name: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: [null, Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
       password: ['', [Validators.required, symbolValidator, Validators.minLength(4)]],
       confirmPassword: ''
     }, {
@@ -63,6 +64,8 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value)
+
+    this.registerService.register(this.registerForm.value);
     this.router.navigate(['/login'], { state:{fromRegister:"true"}})
   }
 

@@ -13,9 +13,11 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { AddProductsComponent } from './component/add-products/add-products.component';
-import { ModalModule} from 'ngx-bootstrap/modal';
+// import { ModalModule} from 'ngx-bootstrap/modal';
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { AddCategoryComponent } from './component/add-category/add-category.component';
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
+import { ModalModule } from 'ngb-modal';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { AddCategoryComponent } from './component/add-category/add-category.comp
     AdminComponent,
     AddProductsComponent,
     CheckoutComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { AddCategoryComponent } from './component/add-category/add-category.comp
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule
+    // ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

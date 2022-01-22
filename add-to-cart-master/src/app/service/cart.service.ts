@@ -20,7 +20,20 @@ export class CartService {
     this.productList.next(product);
   }
   addtoCart(product : any){
+    console.log(product)
+    let found = false
+    // this.cartItemList.forEach((element:any) => {
+    //   if(product.id == element.id){
+    //     found = true
+    //     element.price = element.price +  product.price 
+    //     element.quantity = element.quantity + 1
+    //   }
+    // });
+    // if(!found){
+    //   this.cartItemList.push(product)
+    // }
     this.cartItemList.push(product);
+ 
     this.productList.next(this.cartItemList);
     this.getTotalPrice();
     console.log(this.cartItemList)

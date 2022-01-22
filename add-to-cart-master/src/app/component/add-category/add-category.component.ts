@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ImageUploadService } from 'src/app/service/image-upload.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class AddCategoryComponent implements OnInit {
 
   selectedFile: File | undefined
   model:any = {}
-  constructor(private imageService: ImageUploadService) { }
+  constructor(private router: Router, private imageService: ImageUploadService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,7 @@ export class AddCategoryComponent implements OnInit {
     console.log(formData)
       this.imageService.postImage(formData).subscribe( res=>{
         console.log(res)
+        this.router.navigate(['']);
       })
 
     }

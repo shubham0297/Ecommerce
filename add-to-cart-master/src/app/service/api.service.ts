@@ -11,8 +11,22 @@ export class ApiService {
   constructor(private http : HttpClient) { }
 
   getProduct(){
-    // return this.http.get<any>("http://localhost:5000/categories")
-    return this.http.get<any>(" https://fakestoreapi.com/products")
+    return this.http.get<any>("http://localhost:5000/products")
+    // return this.http.get<any>(" https://fakestoreapi.com/products")
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  getCategories(){
+    return this.http.get<any>("http://localhost:5000/categories")
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  getOrderHistory(){
+    return this.http.get<any>("http://localhost:5000/orderHistory")
     .pipe(map((res:any)=>{
       return res;
     }))
